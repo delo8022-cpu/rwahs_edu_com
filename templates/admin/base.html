@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয় - এডমিন{% endblock %}</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- CSS Files -->
+    {% load static %}
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/utils/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/utils/utilities.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layouts/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layouts/grid.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layouts/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/cards.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components/tables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layouts/login.css' %}">
+
+    {% block extrahead %}{% endblock %}
+    {% block extrastyle %}{% endblock %}
+</head>
+
+<body class="admin-body">
+    <!-- Header Component -->
+    {% include 'admin/includes/header.html' %}
+
+    <div class="admin-container">
+        <!-- Sidebar Component -->
+        {% include 'admin/includes/sidebar.html' %}
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Messages Component -->
+            {% include 'admin/includes/messages.html' %}
+
+            <!-- Page Specific Content -->
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <!-- Footer Component -->
+    {% include 'admin/includes/footer.html' %}
+
+    <!-- JavaScript Files -->
+    <script src="{% static 'js/components/sidebar.js' %}"></script>
+    <script src="{% static 'js/components/notifications.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+    {% block extrascript %}{% endblock %}
+</body>
+
+</html>

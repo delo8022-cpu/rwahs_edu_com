@@ -1,0 +1,131 @@
+/* slider.css */
+/* Dhaka Education Board Style Slider */
+
+.slider-section {
+    margin-bottom: 25px;
+}
+
+.slider-section .carousel {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border: 2px solid #e0e0e0;
+}
+
+.slider-section .carousel-item img {
+    border-radius: 8px;
+    height: 350px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.slider-section .carousel-caption {
+    background: linear-gradient(135deg, rgba(44, 92, 28, 0.9) 0%, rgba(30, 63, 20, 0.9) 100%);
+    border-radius: 8px;
+    padding: 20px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    border: 2px solid #ffd700;
+}
+
+.slider-section .carousel-caption h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.slider-section .carousel-caption p {
+    font-size: 14px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.slider-section .linkbutton {
+    background: #ffd700;
+    color: #2c5c1c;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.slider-section .linkbutton:hover {
+    background: #2c5c1c;
+    color: #ffd700;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-color: #ffd700;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background: rgba(44, 92, 28, 0.8);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 15px;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(44, 92, 28, 1);
+}
+
+.carousel-indicators button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 5px;
+    background-color: #2c5c1c;
+    border: 2px solid white;
+}
+
+.carousel-indicators button.active {
+    background-color: #ffd700;
+    border-color: #2c5c1c;
+}
+
+/* Responsive Slider */
+@media (max-width: 768px) {
+    .slider-section .carousel-item img {
+        height: 250px;
+    }
+    
+    .slider-section .carousel-caption {
+        padding: 15px;
+        bottom: 20px;
+    }
+    
+    .slider-section .carousel-caption h5 {
+        font-size: 16px;
+    }
+    
+    .slider-section .carousel-caption p {
+        font-size: 12px;
+    }
+    
+    .slider-section .linkbutton {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+        margin: 0 10px;
+    }
+}

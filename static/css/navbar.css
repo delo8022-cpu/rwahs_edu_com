@@ -1,0 +1,161 @@
+/* navbar.css */
+/* Updated Navbar Styles */
+
+.menu_section {
+    background: #ffffff; /* সাদা ব্যাকগ্রাউন্ড */
+    border-bottom: 2px solid #e0e0e0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: 'Siyam Rupali', Arial, sans-serif;
+}
+
+.menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.menu > ul > li {
+    position: relative;
+}
+
+.menu_item {
+    color: #000000; /* কালো ফন্ট */
+    padding: 12px 20px;
+    text-decoration: none; /* আন্ডারলাইন বাদ */
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-right: 1px solid #f0f0f0;
+}
+
+.menu > ul > li:last-child .menu_item {
+    border-right: none;
+}
+
+.menu > ul > li > a > .menu_item:hover {
+    background-color: #e0f2e1; /* হালকা সবুজ টিয়া */
+    color: #000000; /* কালো ফন্ট */
+    text-decoration: none; /* হোভারে আন্ডারলাইন বাদ */
+}
+
+/* Dropdown Styles */
+.menu ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9); /* হালকা কালো ব্যাকগ্রাউন্ড */
+    min-width: 220px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    border-top: 2px solid #4caf50; /* সবুজ বর্ডার */
+    z-index: 1000;
+}
+
+.menu ul ul ul {
+    top: 0;
+    left: 100%;
+    border-top: 2px solid #4caf50;
+}
+
+.menu ul li:hover > ul {
+    display: block;
+}
+
+.menu ul ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.menu ul ul .menu_item {
+    padding: 10px 15px;
+    font-weight: 500;
+    font-size: 14px;
+    border-right: none;
+    background: rgba(0, 0, 0, 0.9); /* হালকা কালো ব্যাকগ্রাউন্ড */
+    color: #ffffff; /* সাদা ফন্ট */
+    text-decoration: none; /* আন্ডারলাইন বাদ */
+}
+
+.menu ul ul .menu_item:hover {
+    background: #4caf50; /* হালকা সবুজ টিয়া হোভারে */
+    color: #ffffff; /* সাদা ফন্ট */
+    padding-left: 20px;
+    text-decoration: none; /* হোভারে আন্ডারলাইন বাদ */
+}
+
+/* Dropdown arrow for submenu items */
+.menu ul ul .menu_item:after {
+    content: '▼';
+    float: right;
+    font-size: 10px;
+    margin-left: 10px;
+    color: #ffffff; /* সাদা কালার */
+}
+
+/* Main menu items - no underline ever */
+.menu > ul > li > a {
+    text-decoration: none !important;
+}
+
+.menu > ul > li > a:hover {
+    text-decoration: none !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991px) {
+    .menu ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .menu > ul > li {
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .menu_item {
+        border-right: none;
+        padding: 10px 15px;
+        color: #000000; /* কালো ফন্ট */
+    }
+    
+    .menu ul ul {
+        position: static;
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.8); /* মোবাইলে একটু আলাদা শেড */
+        min-width: auto;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .menu ul ul ul {
+        position: static;
+        background: rgba(0, 0, 0, 0.7); /* মোবাইলে ডার্কার */
+    }
+    
+    .menu ul ul .menu_item {
+        color: #ffffff; /* সাদা ফন্ট */
+    }
+}
+
+/* Ensure no underline anywhere */
+.menu a {
+    text-decoration: none !important;
+}
+
+.menu a:hover {
+    text-decoration: none !important;
+}
+
+.menu_item:hover {
+    text-decoration: none !important;
+}

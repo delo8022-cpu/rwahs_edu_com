@@ -1,0 +1,229 @@
+/* কাস্টম এডমিন স্টাইল - সবুজ থিম */
+:root {
+    --primary-green: #006400;
+    --primary-light: #008000;
+    --success-green: #28a745;
+    --light-green: #d4edda;
+    --dark-green: #004d00;
+    --soft-green: #f0f8f0;
+    --hover-green: #005600;
+}
+
+/* হেডার স্টাইল */
+#header {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%) !important;
+    color: white;
+    border-bottom: 3px solid var(--dark-green);
+}
+
+#branding h1 {
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+#branding h1 a {
+    color: white !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* লোগো স্টাইল */
+.admin-logo {
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
+}
+
+/* ব্রেডক্রম্বস */
+div.breadcrumbs {
+    background: var(--dark-green) !important;
+    color: white;
+    font-weight: 500;
+}
+
+div.breadcrumbs a {
+    color: #a3d9a5 !important;
+}
+
+div.breadcrumbs a:hover {
+    color: white !important;
+}
+
+/* বাটন স্টাইল */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: var(--primary-green) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 5px rgba(0, 100, 0, 0.2) !important;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+    background: var(--dark-green) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.3) !important;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: var(--success-green) !important;
+    border: none !important;
+}
+
+.button.default:hover, input[type=submit].default:hover {
+    background: #218838 !important;
+}
+
+/* মডিউল হেডার */
+.module h2, .module caption, .inline-group h2 {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%) !important;
+    color: white !important;
+    font-weight: 600;
+    padding: 12px 15px !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+/* টেবিল স্টাইল */
+#changelist table thead th {
+    background: var(--soft-green) !important;
+    color: var(--primary-green) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-green) !important;
+}
+
+#changelist table tbody tr:hover {
+    background: var(--soft-green) !important;
+}
+
+/* সাইডবার */
+#content-related {
+    background: var(--soft-green) !important;
+    border-left: 3px solid var(--primary-green) !important;
+}
+
+#content-related .module h2 {
+    background: var(--primary-green) !important;
+    color: white !important;
+}
+
+/* ফর্ম স্টাইল */
+input[type=text], input[type=password], input[type=email], input[type=url],
+input[type=number], textarea, select, .vTextField {
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 6px !important;
+    padding: 10px !important;
+    transition: all 0.3s ease !important;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
+input[type=url]:focus, input[type=number]:focus, textarea:focus, select:focus {
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.1) !important;
+    outline: none !important;
+}
+
+/* সিলেক্ট বক্স */
+select {
+    background: white url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23006400' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") no-repeat right 10px center/16px 16px !important;
+}
+
+/* চেকবক্স এবং রেডিও বাটন */
+input[type=checkbox]:checked, input[type=radio]:checked {
+    accent-color: var(--primary-green) !important;
+}
+
+/* অ্যালার্ট মেসেজ */
+.messagelist .success {
+    background: var(--light-green) !important;
+    color: var(--dark-green) !important;
+    border-left: 4px solid var(--success-green) !important;
+}
+
+.messagelist .warning {
+    background: #fff3cd !important;
+    color: #856404 !important;
+    border-left: 4px solid #ffc107 !important;
+}
+
+.messagelist .error {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border-left: 4px solid #dc3545 !important;
+}
+
+/* পেজিনেশন */
+.paginator {
+    background: var(--soft-green) !important;
+    border-top: 2px solid var(--primary-green) !important;
+}
+
+.paginator a:link, .paginator a:visited {
+    background: white !important;
+    color: var(--primary-green) !important;
+    border: 1px solid var(--primary-green) !important;
+    border-radius: 4px !important;
+    margin: 0 2px !important;
+    padding: 5px 10px !important;
+}
+
+.paginator a:hover {
+    background: var(--primary-green) !important;
+    color: white !important;
+}
+
+.paginator .this-page {
+    background: var(--primary-green) !important;
+    color: white !important;
+    border: 1px solid var(--primary-green) !important;
+}
+
+/* সার্চ বক্স */
+#searchbar {
+    border: 2px solid var(--primary-green) !important;
+    border-radius: 25px !important;
+    padding: 8px 15px !important;
+}
+
+#searchbar:focus {
+    box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.1) !important;
+}
+
+/* ট্যাবুলার ইনলাইন */
+.inline-group .tabular tr.has_original td {
+    background: var(--soft-green) !important;
+}
+
+/* ক্যালেন্ডার এবং টাইম পিকার */
+.calendar caption, .calendarbox h2 {
+    background: var(--primary-green) !important;
+    color: white !important;
+}
+
+.calendar td a:link, .calendar td a:visited {
+    background: var(--primary-green) !important;
+    color: white !important;
+}
+
+.calendar td a:hover {
+    background: var(--dark-green) !important;
+}
+
+/* রেস্পন্সিভ */
+@media (max-width: 768px) {
+    #header {
+        padding: 10px !important;
+    }
+    
+    #branding h1 {
+        font-size: 1.1em !important;
+    }
+    
+    .admin-logo {
+        height: 35px !important;
+    }
+}

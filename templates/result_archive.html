@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4">রেজাল্ট আর্কাইভ</h2>
+
+        <!-- SSC Results -->
+        <div class="mb-5">
+            <h3 class="text-success">এসএসসি রেজাল্ট</h3>
+            {% if ssc_results %}
+                <div class="list-group">
+                    {% for result in ssc_results %}
+                    <div class="list-group-item list-group-item-action">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="mb-1">{{ result.title }}</h5>
+                                <small>আপলোডের তারিখ: {{ result.uploaded_at|date:"d M, Y" }}</small>
+                            </div>
+                            <a href="{{ result.pdf_file.url }}" target="_blank" class="btn btn-sm btn-success">PDF দেখুন</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted">কোনো SSC রেজাল্ট পাওয়া যায়নি।</p>
+            {% endif %}
+        </div>
+
+        <!-- HSC Results -->
+        <div>
+            <h3 class="text-success">এইচএসসি রেজাল্ট</h3>
+            {% if hsc_results %}
+                <div class="list-group">
+                    {% for result in hsc_results %}
+                    <div class="list-group-item list-group-item-action">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h5 class="mb-1">{{ result.title }}</h5>
+                                <small>আপলোডের তারিখ: {{ result.uploaded_at|date:"d M, Y" }}</small>
+                            </div>
+                            <a href="{{ result.pdf_file.url }}" target="_blank" class="btn btn-sm btn-success">PDF দেখুন</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-muted">কোনো HSC রেজাল্ট পাওয়া যায়নি।</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

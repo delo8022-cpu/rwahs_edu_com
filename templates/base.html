@@ -1,0 +1,81 @@
+{% load static bootstrap5 %}
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়</title>
+
+  <!-- ফেভিকন -->
+  {% if site_settings.favicon %}
+  <link rel="icon" type="image/x-icon" href="{{ site_settings.favicon.url }}">
+  {% endif %}
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Siyam Rupali Font -->
+  <link href="https://fonts.maateen.me/SiyamRupali-Regular/font.css" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  {% bootstrap_css %}
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/header.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/sidebar.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'css/slider.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/notice.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/result.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/breaking-news.css' %}">
+</head>
+
+<body>
+
+  <div class="site-container">
+    {% include 'includes/header.html' %}
+    {% include 'includes/breaking_news.html' %}
+    {% include 'includes/navbar.html' %}
+
+    <!-- Main Layout -->
+    <div class="container px-3 py-2">
+      <div class="row g-3">
+        <!-- Left Sidebar (3 কলাম) -->
+        <div class="col-lg-3 col-md-12">
+          {% include 'includes/left_sidebar.html' %}
+        </div>
+
+        <!-- Main Content Area (9 কলাম) -->
+        <div class="col-lg-9 col-md-12">
+          <!-- স্লাইডার + রাইট সাইডবার (শুধু সর্বশেষ নোটিশ) -->
+          <div class="row g-3 mb-4">
+            <!-- স্লাইডার (8 কলাম) -->
+            <div class="col-lg-8">
+              {% block slider %}{% endblock %}
+            </div>
+            <!-- রাইট সাইডবার (4 কলাম, 300px উচ্চতা) -->
+            <div class="col-lg-4">
+              {% include 'includes/right_sidebar.html' %}
+            </div>
+          </div>
+
+          <!-- হোমপেজ সেকশন (পুরো 9 কলাম জুড়ে) -->
+          {% block homepage_sections %}{% endblock %}
+        </div>
+      </div>
+    </div>
+
+    {% include 'includes/footer.html' %}
+  </div>
+
+ <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

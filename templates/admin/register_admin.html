@@ -1,0 +1,103 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="content-header">
+        <h1 class="content-title">
+            <i class="fas fa-user-plus"></i>
+            নতুন এডমিন রেজিস্ট্রেশন
+        </h1>
+    </div>
+
+    <div class="grid grid-1">
+        <div class="grid-item">
+            <form method="post" class="admin-form">
+                {% csrf_token %}
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="id_username" class="form-label required">ইউজারনেম</label>
+                            {{ form.username }}
+                            {% if form.username.errors %}
+                            <div class="invalid-feedback">{{ form.username.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="id_email" class="form-label required">ইমেইল</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                            <div class="invalid-feedback">{{ form.email.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="id_first_name" class="form-label required">প্রথম নাম</label>
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="id_last_name" class="form-label required">শেষ নাম</label>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="id_password1" class="form-label required">পাসওয়ার্ড</label>
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}
+                            <div class="invalid-feedback">{{ form.password1.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="id_password2" class="form-label required">পাসওয়ার্ড নিশ্চিত করুন</label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                            <div class="invalid-feedback">{{ form.password2.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="{% url 'custom_admin:index' %}" class="btn btn-ghost">বাতিল করুন</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> এডমিন রেজিস্টার করুন
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+.admin-form .form-control {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+}
+
+.admin-form .form-control:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.1);
+}
+</style>
+{% endblock %}

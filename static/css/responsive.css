@@ -1,0 +1,172 @@
+/* responsive.css */
+/* Dhaka Education Board Style Responsive Design */
+
+/* Large Devices (Desktop) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+/* Medium Devices (Tablets) */
+@media (max-width: 991px) {
+    .sidebar-left, .sidebar-right {
+        height: auto;
+        position: static;
+        margin-bottom: 20px;
+    }
+    
+    .header-title {
+        font-size: 24px;
+    }
+    
+    .header-subtitle {
+        font-size: 16px;
+    }
+    
+    .menu_section .menu > ul > li {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .menu_section .menu > ul > li > ul {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+    }
+}
+
+/* Small Devices (Mobile) */
+@media (max-width: 768px) {
+    .site-container {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    
+    .header-container {
+        padding: 10px 0;
+    }
+    
+    .header-logo img {
+        height: 50px;
+        border-width: 2px;
+    }
+    
+    .header-title {
+        font-size: 18px;
+    }
+    
+    .header-subtitle {
+        font-size: 14px;
+    }
+    
+    .container.px-3 {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+    
+    .sidebar-left, .sidebar-right {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        margin-bottom: 15px;
+    }
+    
+    .main-content {
+        padding: 15px;
+        border-radius: 0;
+    }
+    
+    .box-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .box2 {
+        padding: 15px;
+    }
+    
+    .box2 h4 {
+        font-size: 12px;
+    }
+    
+    .box2 img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Mobile Menu Improvements */
+    .menu_section .menu > ul > li > a {
+        padding: 12px 15px;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .menu_section .menu > ul > li:last-child > a {
+        border-bottom: none;
+    }
+    
+    .menu_section .menu ul ul {
+        background: #f8f9fa;
+        border-left: 4px solid #2c5c1c;
+    }
+    
+    .menu_section .menu ul ul li a {
+        padding: 10px 20px;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 576px) {
+    .header-logo img {
+        height: 40px;
+    }
+    
+    .header-title {
+        font-size: 16px;
+    }
+    
+    .header-subtitle {
+        font-size: 12px;
+    }
+    
+    .box-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+    
+    .footer-section .row {
+        text-align: center;
+    }
+    
+    .footer-bottom .text-start,
+    .footer-bottom .text-end {
+        text-align: center !important;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .sidebar-left, .sidebar-right, .footer-section {
+        display: none !important;
+    }
+    
+    .site-container {
+        box-shadow: none !important;
+        margin: 0 !important;
+    }
+    
+    .main-content {
+        box-shadow: none !important;
+        border: none !important;
+    }
+}

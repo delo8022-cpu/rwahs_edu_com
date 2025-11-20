@@ -1,0 +1,207 @@
+/* Admin Sidebar Styles */
+.admin-sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, var(--light) 0%, #ffffff 100%);
+    border-right: 1px solid var(--border-light);
+    height: calc(100vh - 80px);
+    position: fixed;
+    left: 0;
+    top: 80px;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    z-index: 999;
+}
+
+.sidebar-nav {
+    padding: var(--spacing-lg) 0;
+}
+
+.nav-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.nav-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 var(--spacing-sm) var(--spacing-lg);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    border-left: 3px solid transparent;
+    font-weight: 500;
+}
+
+.nav-item:hover {
+    background: var(--soft-green);
+    color: var(--primary-green);
+    border-left-color: var(--primary-green);
+    transform: translateX(5px);
+}
+
+.nav-item.active {
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-light) 100%);
+    color: white;
+    border-left-color: var(--primary-dark);
+    box-shadow: 0 2px 8px rgba(0, 100, 0, 0.2);
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid white;
+}
+
+.nav-item i {
+    font-size: 1.1em;
+    width: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.nav-item:hover i,
+.nav-item.active i {
+    transform: scale(1.1);
+}
+
+.nav-item span {
+    flex: 1;
+    font-size: var(--font-size-base);
+}
+
+/* Sidebar Badges */
+.nav-badge {
+    background: var(--success);
+    color: white;
+    font-size: var(--font-size-sm);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.nav-item.active .nav-badge {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* Sidebar Collapse Functionality */
+.sidebar-collapsed .admin-sidebar {
+    width: 70px;
+}
+
+.sidebar-collapsed .section-title,
+.sidebar-collapsed .nav-item span,
+.sidebar-collapsed .nav-badge {
+    display: none;
+}
+
+.sidebar-collapsed .nav-item {
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.sidebar-collapsed .nav-item i {
+    font-size: 1.3em;
+}
+
+/* Scrollbar Styling */
+.admin-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background: var(--primary-green);
+    border-radius: 10px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Responsive Sidebar */
+@media (max-width: 1024px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sidebar-open .admin-sidebar {
+        transform: translateX(0);
+    }
+    
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+    
+    .sidebar-open .sidebar-overlay {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-sidebar {
+        width: 250px;
+    }
+}
+
+/* Sidebar Animation */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.admin-sidebar {
+    animation: slideInLeft 0.3s ease-out;
+}
+
+.nav-item {
+    animation: slideInLeft 0.4s ease-out both;
+}
+
+.nav-item:nth-child(1) { animation-delay: 0.1s; }
+.nav-item:nth-child(2) { animation-delay: 0.15s; }
+.nav-item:nth-child(3) { animation-delay: 0.2s; }
+.nav-item:nth-child(4) { animation-delay: 0.25s; }
+.nav-item:nth-child(5) { animation-delay: 0.3s; }

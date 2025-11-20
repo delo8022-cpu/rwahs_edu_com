@@ -1,0 +1,70 @@
+<!-- breaking_news.html -->
+<!-- Breaking News Section -->
+{% load static %}
+
+<div class="news_section">
+    <section class="content" style="min-height: 0px;">
+        <div class="row" style="align-items: center; margin: 0;">
+            <div class="col-lg-10 col-md-9 col-sm-8">
+                <div class="news-marquee-wrapper" id="marqueeWrapper"> 
+                    <div class="news-marquee" id="latest_news">
+                        {% for item in breaking_news %}
+                            <span class="news-item">
+                                🟠 
+                                {% if item.link %}
+                                    <a href="{{ item.link }}" target="_blank" class="fntclrw underline">{{ item.title }}</a>
+                                {% else %}
+                                    {{ item.title }}
+                                {% endif %}
+                            </span>
+                        {% empty %}
+                            <span class="news-item fntclrw">🟠 বর্তমানে কোনো নোটিশ নেই</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-2 col-md-3 col-sm-4" style="text-align: center;">
+                <button id="showAllNewsBtn" class="btn-all-news" onclick="openNewsModal()">
+                    <span style="font-size: 16px; font-weight: bold;">সকল খবর</span>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Custom Modal -->
+<div class="custom-modal-overlay" id="newsModalOverlay">
+    <div class="custom-modal-container">
+        <div class="custom-modal-header">
+            <h3 class="custom-modal-title">সকল নিউজ ও নোটিশ</h3>
+            <button class="custom-close-btn" onclick="closeNewsModal()">&times;</button>
+        </div>
+        <div class="custom-modal-body">
+            {% if breaking_news %}
+                <ul class="news-list">
+                    {% for item in breaking_news %}
+                    <li>
+                        <span class="news-bullet">🟢</span>
+                        <span class="news-title">{{ item.title }}</span>
+                        {% if item.pdf_file %}
+                            <a href="{{ item.pdf_file.url }}" target="_blank" class="btn-download">ডাউনলোড</a>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 48px; margin-bottom: 20px;">📭</div>
+                    <p style="font-size: 18px; color: #6c757d; margin: 0;">কোনো নোটিশ পাওয়া যায়নি</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="custom-modal-footer">
+            <button class="btn-close-custom" onclick="closeNewsModal()">বন্ধ করুন</button>
+        </div>
+    </div>
+</div>
+
+<!-- JS ফাইল লিঙ্ক -->
+<script src="{% static 'js/breaking-news.js' %}"></script>

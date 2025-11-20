@@ -1,0 +1,64 @@
+<div class="form-section">
+    <div class="form-section-header">
+        <h3 class="form-section-title">
+            <i class="fas fa-user-edit"></i>
+            ব্যবহারকারী তথ্য
+        </h3>
+    </div>
+    
+    <div class="form-row">
+        <div class="form-col">
+            <div class="form-group">
+                <label for="firstName" class="form-label required">প্রথম নাম</label>
+                <input type="text" class="form-control" id="firstName" placeholder="আপনার প্রথম নাম লিখুন">
+                <div class="valid-feedback">দেখতে ভালো!</div>
+                <div class="invalid-feedback">অনুগ্রহ করে একটি বৈধ নাম লিখুন।</div>
+            </div>
+        </div>
+        
+        <div class="form-col">
+            <div class="form-group">
+                <label for="lastName" class="form-label">শেষ নাম</label>
+                <input type="text" class="form-control" id="lastName" placeholder="আপনার শেষ নাম লিখুন">
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="email" class="form-label required">ইমেইল ঠিকানা</label>
+        <div class="form-icon">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <input type="email" class="form-control form-control-with-icon" id="email" placeholder="you@example.com">
+    </div>
+    
+    <div class="form-group">
+        <label for="userRole" class="form-label">ভূমিকা</label>
+        <select class="form-control" id="userRole">
+            <option value="">ভূমিকা নির্বাচন করুন</option>
+            <option value="admin">এডমিন</option>
+            <option value="teacher">শিক্ষক</option>
+            <option value="student">শিক্ষার্থী</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label class="form-label">অবস্থা</label>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="status" id="statusActive" value="active" checked>
+            <label class="form-check-label" for="statusActive">সক্রিয়</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="status" id="statusInactive" value="inactive">
+            <label class="form-check-label" for="statusInactive">নিষ্ক্রিয়</label>
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="reset" class="btn btn-ghost">বাতিল করুন</button>
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i>
+            সংরক্ষণ করুন
+        </button>
+    </div>
+</div>

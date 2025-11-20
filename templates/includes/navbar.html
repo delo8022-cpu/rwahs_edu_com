@@ -1,0 +1,127 @@
+<!-- navbar.html -->
+<div class="menu_section">
+    <div class="menu">
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">
+                    <div class="menu_item">হোম</div>
+                </a>
+            </li>
+            
+            <li>
+                <a href="{% url 'notice_list' %}">
+                    <div class="menu_item">নোটিশ</div>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/result/">
+                    <div class="menu_item">রেজাল্ট</div>
+                </a>
+            </li>
+            
+            <li>
+                <a>
+                    <div class="menu_item">স্কুল সম্পর্কে</div>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/about/history/">
+                            <div class="menu_item">ইতিহাস</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/about/teachers/">
+                            <div class="menu_item">শিক্ষকবৃন্দ</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/about/management/">
+                            <div class="menu_item">পরিচালনা পরিষদ</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/about/infrastructure/">
+                            <div class="menu_item">বিদ্যালয়ের অবকাঠামো</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a>
+                    <div class="menu_item">একাডেমিক</div>
+                </a>
+                <ul>
+                    <li>
+                        <a href="/academic/routine/">
+                            <div class="menu_item">ক্লাস রুটিন</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/academic/syllabus/">
+                            <div class="menu_item">সিলেবাস</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/academic/calendar/">
+                            <div class="menu_item">একাডেমিক ক্যালেন্ডার</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
+                <a href="/gallery/">
+                    <div class="menu_item">গ্যালারি</div>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/contact/">
+                    <div class="menu_item">যোগাযোগ</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Simple JavaScript for Mobile -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const menuItems = document.querySelectorAll('.menu > ul > li > a');
+    
+    // Mobile menu functionality
+    function initMobileMenu() {
+        if (window.innerWidth <= 991) {
+            menuItems.forEach(item => {
+                if (item.nextElementSibling) {
+                    item.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const submenu = this.nextElementSibling;
+                        const isOpen = submenu.style.display === 'block';
+                        
+                        // Close all other submenus
+                        document.querySelectorAll('.menu ul ul').forEach(menu => {
+                            menu.style.display = 'none';
+                        });
+                        
+                        // Toggle current submenu
+                        submenu.style.display = isOpen ? 'none' : 'block';
+                    });
+                }
+            });
+        } else {
+            // Desktop - remove click events
+            menuItems.forEach(item => {
+                const newItem = item.cloneNode(true);
+                item.parentNode.replaceChild(newItem, item);
+            });
+        }
+    }
+    
+    // Initialize on load and resize
+    initMobileMenu();
+    window.addEventListener('resize', initMobileMenu);
+});
+</script>

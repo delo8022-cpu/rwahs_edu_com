@@ -1,0 +1,108 @@
+/* Admin Layout Styles */
+.admin-body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background: var(--light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.admin-container {
+    display: flex;
+    min-height: calc(100vh - 80px);
+    position: relative;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    padding: var(--spacing-lg);
+    transition: all 0.3s ease;
+    background: #f8fafc;
+    min-height: calc(100vh - 80px);
+}
+
+.sidebar-collapsed .main-content {
+    margin-left: 70px;
+}
+
+/* Content Area */
+.content-header {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-light);
+    display: flex;
+    justify-content: between;
+    align-items: center;
+}
+
+.content-title {
+    margin: 0;
+    color: var(--primary-green);
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+}
+
+.content-actions {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+/* Main Content Wrapper */
+.content-wrapper {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+}
+
+/* Page Transitions */
+.page-enter {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.page-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+}
+
+.loading::before {
+    content: '⏳';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    font-size: var(--font-size-xl);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

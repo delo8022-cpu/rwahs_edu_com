@@ -1,0 +1,49 @@
+/* Sidebar Responsive Styles */
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .mobile-only {
+        display: block;
+    }
+    
+    .sidebar-toggle {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-md);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: var(--font-size-lg);
+    }
+    
+    .sidebar-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.05);
+    }
+    
+    .admin-container {
+        margin-left: 0;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: var(--spacing-md);
+    }
+}
+
+/* Smooth transitions for sidebar */
+.admin-sidebar,
+.main-content {
+    transition: all 0.3s ease;
+}
+
+.sidebar-collapsed .main-content {
+    margin-left: 70px;
+}

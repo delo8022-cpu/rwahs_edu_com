@@ -1,0 +1,90 @@
+{% load static %}
+<aside class="admin-sidebar">
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay"></div>
+    
+    <nav class="sidebar-nav">
+        <!-- Dashboard Section -->
+        <div class="nav-section">
+            <a href="/admin/" 
+               class="nav-item {% if request.path == '/admin/' %}active{% endif %}">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>ড্যাশবোর্ড</span>
+                <span class="nav-badge">New</span>
+            </a>
+        </div>
+        
+        <!-- School Management Section -->
+        <div class="nav-section">
+            <h3 class="section-title">স্কুল ম্যানেজমেন্ট</h3>
+            <a href="/admin/school/notice/" 
+               class="nav-item {% if 'notice' in request.path %}active{% endif %}">
+                <i class="fas fa-bullhorn"></i>
+                <span>নোটিশ ম্যানেজমেন্ট</span>
+            </a>
+            <a href="/admin/school/result/" 
+               class="nav-item {% if 'result' in request.path %}active{% endif %}">
+                <i class="fas fa-file-pdf"></i>
+                <span>রেজাল্ট আর্কাইভ</span>
+            </a>
+            <a href="/admin/school/slider/" 
+               class="nav-item {% if 'slider' in request.path %}active{% endif %}">
+                <i class="fas fa-images"></i>
+                <span>স্লাইডার ম্যানেজমেন্ট</span>
+            </a>
+        </div>
+        
+        <!-- Content Management Section -->
+        <div class="nav-section">
+            <h3 class="section-title">কন্টেন্ট ম্যানেজমেন্ট</h3>
+            <a href="/admin/school/official/" 
+               class="nav-item {% if 'official' in request.path %}active{% endif %}">
+                <i class="fas fa-users"></i>
+                <span>কর্মকর্তাগণ</span>
+            </a>
+            <a href="/admin/school/sidebarlink/" 
+               class="nav-item {% if 'link' in request.path %}active{% endif %}">
+                <i class="fas fa-link"></i>
+                <span>সাইডবার লিঙ্ক</span>
+            </a>
+            <a href="/admin/school/homepagesection/" 
+               class="nav-item {% if 'section' in request.path %}active{% endif %}">
+                <i class="fas fa-th-large"></i>
+                <span>হোমপেজ সেকশন</span>
+            </a>
+            <a href="/admin/school/breakingnews/" 
+               class="nav-item {% if 'breaking' in request.path %}active{% endif %}">
+                <i class="fas fa-newspaper"></i>
+                <span>চলমান নোটিশ</span>
+            </a>
+        </div>
+        
+        <!-- Settings Section -->
+        <div class="nav-section">
+            <h3 class="section-title">সিস্টেম সেটিংস</h3>
+            <a href="/admin/school/sitesettings/1/change/" 
+               class="nav-item {% if 'settings' in request.path %}active{% endif %}">
+                <i class="fas fa-cog"></i>
+                <span>সাইট সেটিংস</span>
+            </a>
+            <!-- ইউজার ম্যানেজমেন্ট লিঙ্ক সরানো হয়েছে -->
+        </div>
+
+        <!-- Quick Actions Section -->
+        <div class="nav-section">
+            <h3 class="section-title">দ্রুত কাজ</h3>
+            <a href="/admin/school/notice/add/" class="nav-item">
+                <i class="fas fa-plus-circle"></i>
+                <span>নতুন নোটিশ</span>
+            </a>
+            <a href="/admin/school/result/add/" class="nav-item">
+                <i class="fas fa-file-upload"></i>
+                <span>রেজাল্ট আপলোড</span>
+            </a>
+            <a href="/admin/school/slider/add/" class="nav-item">
+                <i class="fas fa-image"></i>
+                <span>স্লাইডার যোগ</span>
+            </a>
+        </div>
+    </nav>
+</aside>

@@ -1,0 +1,24 @@
+<div class="sidebar-right">
+  <div class="card h-100">
+    <div class="card-header bg-success text-white">
+      <h6 class="mb-0">সর্বশেষ নোটিশ</h6>
+    </div>
+    <div class="card-body">
+      <ul class="list-unstyled">
+        {% for notice in latest_notices %}
+        <li>
+          <a href="{% url 'notice_detail' notice.pk %}" class="text-decoration-none">
+            {{ notice.title }}
+          </a>
+          <small class="text-muted">
+            <span>নোটিশ</span>
+            <span class="date">{{ notice.published_date|date:"d M, Y" }}</span>
+          </small>
+        </li>
+        {% empty %}
+        <li class="text-muted">কোনো নোটিশ নেই</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

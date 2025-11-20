@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="mb-4">নোটিশ বোর্ড</h2>
+        
+        {% if notices %}
+            <div class="list-group">
+                {% for notice in notices %}
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ notice.title }}</h5>
+                        <small>{{ notice.published_date|date:"d M, Y" }}</small>
+                    </div>
+                    <p class="mb-1">{{ notice.content|truncatewords:30 }}</p>
+                    <a href="{% url 'notice_detail' notice.pk %}" class="btn btn-sm btn-outline-success mt-2">বিস্তারিত পড়ুন</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-info">কোনো নোটিশ পাওয়া যায়নি।</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

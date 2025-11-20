@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h2 class="mb-0">{{ notice.title }}</h2>
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-3">
+                    <small>প্রকাশের তারিখ: {{ notice.published_date|date:"d F, Y" }}</small>
+                </p>
+                <div class="notice-content">
+                    {{ notice.content|linebreaks }}
+                </div>
+            </div>
+            <div class="card-footer text-end">
+                <a href="{% url 'notice_list' %}" class="btn btn-outline-success">← সকল নোটিশ</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

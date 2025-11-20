@@ -1,0 +1,7 @@
+WARNING 2025-10-31 20:38:19,813 log 2592 6036 Not Found: /notice/<script>alert('xss')</script>
+WARNING 2025-10-31 20:38:19,814 basehttp 2592 6036 "GET /notice/%3Cscript%3Ealert('xss')%3C/script%3E HTTP/1.1" 404 4875
+WARNING 2025-10-31 20:48:21,029 log 3032 15244 Not Found: /favicon.ico
+WARNING 2025-10-31 21:10:41,496 log 12396 4868 Not Found: /favicon.ico
+WARNING 2025-11-03 15:40:46,158 log 19388 3620 Not Found: /favicon.ico
+WARNING 2025-11-03 15:40:50,596 log 19388 17160 Not Found: /favicon.ico
+WARNING 2025-11-20 10:09:03,751 log 4480 13188 Not Found: /favicon.ico

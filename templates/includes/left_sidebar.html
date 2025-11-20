@@ -1,0 +1,49 @@
+<div class="sidebar-left">
+
+  <!-- চেয়ারম্যান ও সচিব (অ্যাডমিন থেকে ম্যানেজ করা) -->
+  {% for official in sidebar_officials %}
+  <div class="chairman-corner mb-3">
+    <div class="card text-center">
+      <img src="{{ official.photo.url }}" 
+           class="img-fluid rounded-circle mx-auto mt-2" 
+           style="width: 80px; height: 80px; object-fit: cover;">
+      <div class="card-body p-2">
+        <h6 class="card-title mb-1" style="font-size: 14px; font-weight: bold;">{{ official.name }}</h6>
+        <p class="text-muted mb-1" style="font-size: 13px;">{{ official.get_position_display }}</p>
+        {% if official.position == 'secretary' %}
+        <button class="btn btn-sm btn-success mt-1" style="font-size: 12px;">বিস্তারিত</button>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- ডাইনামিক লিঙ্ক -->
+  {% for category in sidebar_categories %}
+  <div class="service-menu mb-3">
+    <h6 class="card-header 
+      {% if category.name == 'অনলাইন সেবা' %}bg-success
+      {% elif category.name == 'রেজাল্ট' %}bg-info
+      {% elif category.name == 'সামাজিক মাধ্যম' %}bg-dark text-white
+      {% elif category.name == 'হেল্পলাইন' %}bg-warning text-dark
+      {% else %}bg-primary text-white{% endif %}">
+      {{ category.name }}
+    </h6>
+    <div class="card-body p-2">
+      {% for link in category.sidebarlink_set.all %}
+      <a href="{{ link.url }}" target="_blank" class="d-block mb-2 text-decoration-none">
+        <div class="d-flex align-items-center">
+          {% if link.icon %}
+          <div class="me-2">
+            <img src="{{ link.icon.url }}" width="24">
+          </div>
+          {% endif %}
+          <div class="text-primary">{{ link.title }}</div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+
+</div>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লগইন - রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/layouts/login.css' %}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Header -->
+            <div class="login-header">
+                <div class="school-logo">
+                    {% if site_settings and site_settings.logo %}
+                    <img src="{{ site_settings.logo.url }}" alt="লোগো">
+                    {% else %}
+                    <i class="fas fa-school"></i>
+                    {% endif %}
+                </div>
+                <h1>রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়</h1>
+                <p>এডমিন প্যানেল - লগইন</p>
+            </div>
+
+            <!-- Content -->
+            <div class="login-content">
+                {% if form.errors and not form.non_field_errors %}
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    আপনার ইউজারনেম এবং পাসওয়ার্ড মিলছে না। আবার চেষ্টা করুন।
+                </div>
+                {% endif %}
+
+                {% if form.non_field_errors %}
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    {% for error in form.non_field_errors %}
+                    {{ error }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <form method="post" class="login-form" id="login-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    <div class="form-group">
+                        <label for="id_username" class="form-label">
+                            ইউজারনেম
+                        </label>
+                        <div class="form-icon-group">
+                            <i class="form-icon fas fa-user"></i>
+                            <input type="text" name="username" id="id_username" 
+                                   class="form-control" placeholder="আপনার ইউজারনেম লিখুন" 
+                                   required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id_password" class="form-label">
+                            পাসওয়ার্ড
+                        </label>
+                        <div class="form-icon-group">
+                            <i class="form-icon fas fa-lock"></i>
+                            <input type="password" name="password" id="id_password" 
+                                   class="form-control" placeholder="আপনার পাসওয়ার্ড লিখুন" 
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-remember">
+                        <input type="checkbox" name="remember" id="id_remember">
+                        <label for="id_remember">আমাকে মনে রাখুন</label>
+                    </div>
+
+                    <div class="login-actions">
+                        <button type="submit" class="btn btn-primary" id="login-btn">
+                            <i class="fas fa-sign-in-alt"></i> লগইন করুন
+                        </button>
+                        
+                        <a href="/" class="btn btn-ghost">
+                            <i class="fas fa-home"></i> ওয়েবসাইটে ফিরে যান
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <div class="login-footer">
+                <p class="mb-0">&copy; 2025 রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const loginBtn = document.getElementById('login-btn');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> লগইন হচ্ছে...';
+                this.submit();
+            });
+
+            // Enter key support
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !loginBtn.disabled) {
+                    loginForm.requestSubmit();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,280 @@
+/* home.css - Section Icons Styling */
+
+/* Box Section Layout */
+.box-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px; /* গ্যাপ একটু বাড়ানো হয়েছে */
+    margin-top: 0;
+}
+
+.box2 {
+    background: white;
+    border: 1px solid #e0e0e0; /* বর্ডার হালকা করা */
+    border-radius: 15px; /* বর্ডার রেডিয়াস একটু বাড়ানো */
+    padding: 25px 15px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    
+    /* সাবটল বডার শ্যাডো */
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        0 1px 3px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    /* গ্রেডিয়েন্ট বর্ডার ইফেক্ট */
+    background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+}
+
+.box2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(44, 92, 28, 0.03), transparent);
+    transition: left 0.8s ease;
+}
+
+.box2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 14px;
+    padding: 1px; /* বর্ডারের জন্য স্পেস */
+    background: linear-gradient(135deg, rgba(44, 92, 28, 0.1), rgba(255, 215, 0, 0.05));
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.box2:hover::before {
+    left: 100%;
+}
+
+.box2:hover {
+    transform: translateY(-6px); /* হোভারে লিফট একটু কম */
+    box-shadow: 
+        0 8px 25px rgba(44, 92, 28, 0.12),
+        0 4px 12px rgba(44, 92, 28, 0.08),
+        0 2px 4px rgba(44, 92, 28, 0.04);
+    
+    background: linear-gradient(135deg, #f8fff8 0%, #f0faf0 100%);
+    color: #2c5c1c;
+    text-decoration: none;
+    border-color: #c8e6c9;
+}
+
+/* Section Icons - Big Size */
+.section-icon {
+    width: 110px !important;
+    height: 100px !important;
+    object-fit: contain !important;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    padding: 10px;
+    background: rgba(44, 92, 28, 0.03);
+    display: block;
+    margin: 0 auto 15px auto;
+    
+    /* আইকনের সাবটল শ্যাডো */
+    box-shadow: 
+        0 2px 6px rgba(44, 92, 28, 0.08),
+        0 1px 2px rgba(44, 92, 28, 0.12);
+}
+
+.box2:hover .section-icon {
+    transform: scale(1.12) rotate(3deg); /* রোটেশন একটু কম */
+    background: rgba(44, 92, 28, 0.08);
+    box-shadow: 
+        0 4px 15px rgba(44, 92, 28, 0.15),
+        0 2px 6px rgba(44, 92, 28, 0.1);
+}
+
+/* Fallback for icon classes */
+.section-icon-fallback {
+    font-size: 64px;
+    color: #2c5c1c;
+    margin-bottom: 15px;
+    display: block;
+    transition: all 0.4s ease;
+    
+    /* আইকন টেক্সটের সাবটল শ্যাডো */
+    text-shadow: 0 2px 4px rgba(44, 92, 28, 0.1);
+}
+
+.box2:hover .section-icon-fallback {
+    transform: scale(1.12);
+    color: #1e3f14;
+    text-shadow: 0 4px 8px rgba(44, 92, 28, 0.2);
+}
+
+/* Section Title */
+.box2 h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #2c5c1c;
+    transition: all 0.3s ease;
+    line-height: 1.3;
+    
+    /* টাইটেলের সাবটল টেক্সট শ্যাডো */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.box2:hover h4 {
+    color: #1e3f14;
+    transform: scale(1.03);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Description */
+.section-description {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+    transition: color 0.3s ease;
+    
+    /* ডেসক্রিপশনের সাবটল টেক্সট শ্যাডো */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+}
+
+.box2:hover .section-description {
+    color: #2c5c1c;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+/* আলাদা আলাদা বক্সের জন্য সাবটল ভ্যারিয়েশন */
+.box2:nth-child(1) { 
+    box-shadow: 
+        0 2px 8px rgba(30, 63, 20, 0.05),
+        0 1px 3px rgba(30, 63, 20, 0.08);
+}
+.box2:nth-child(2) { 
+    box-shadow: 
+        0 2px 8px rgba(74, 117, 25, 0.05),
+        0 1px 3px rgba(74, 117, 25, 0.08);
+}
+.box2:nth-child(3) { 
+    box-shadow: 
+        0 2px 8px rgba(44, 92, 28, 0.05),
+        0 1px 3px rgba(44, 92, 28, 0.08);
+}
+.box2:nth-child(4) { 
+    box-shadow: 
+        0 2px 8px rgba(255, 215, 0, 0.05),
+        0 1px 3px rgba(255, 215, 0, 0.08);
+}
+.box2:nth-child(5) { 
+    box-shadow: 
+        0 2px 8px rgba(30, 63, 20, 0.05),
+        0 1px 3px rgba(30, 63, 20, 0.08);
+}
+.box2:nth-child(6) { 
+    box-shadow: 
+        0 2px 8px rgba(74, 117, 25, 0.05),
+        0 1px 3px rgba(74, 117, 25, 0.08);
+}
+
+/* হোভারে শ্যাডো ইউনিফাই */
+.box2:hover:nth-child(1),
+.box2:hover:nth-child(2),
+.box2:hover:nth-child(3),
+.box2:hover:nth-child(4),
+.box2:hover:nth-child(5),
+.box2:hover:nth-child(6) {
+    box-shadow: 
+        0 8px 25px rgba(44, 92, 28, 0.12),
+        0 4px 12px rgba(44, 92, 28, 0.08),
+        0 2px 4px rgba(44, 92, 28, 0.04);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .box-section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .box2 {
+        padding: 20px 10px;
+        border-radius: 12px;
+    }
+    
+    .section-icon {
+        width: 80px !important;
+        height: 70px !important;
+        border-radius: 10px;
+    }
+    
+    .box2 h4 {
+        font-size: 14px;
+    }
+    
+    .section-description {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .section-icon {
+        width: 90px !important;
+        height: 80px !important;
+    }
+    
+    .box2 {
+        border-radius: 10px;
+    }
+}
+
+/* ফ্লোটিং অ্যানিমেশন হালকা করা */
+@keyframes boxFloat {
+    0%, 100% { 
+        transform: translateY(0); 
+        box-shadow: 
+            0 2px 8px rgba(0, 0, 0, 0.04),
+            0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    50% { 
+        transform: translateY(-3px); 
+        box-shadow: 
+            0 4px 12px rgba(0, 0, 0, 0.06),
+            0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.box2 {
+    animation: boxFloat 4s ease-in-out infinite;
+}
+
+.box2:nth-child(2) { animation-delay: 0.3s; }
+.box2:nth-child(3) { animation-delay: 0.6s; }
+.box2:nth-child(4) { animation-delay: 0.9s; }
+.box2:nth-child(5) { animation-delay: 1.2s; }
+.box2:nth-child(6) { animation-delay: 1.5s; }
+
+.box2:hover {
+    animation: none;
+}

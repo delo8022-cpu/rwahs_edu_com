@@ -1,0 +1,491 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়{% endblock %}
+
+{% block extrahead %}
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+/* কাস্টম ভেরিয়েবল - সবুজ থিম */
+:root {
+    --primary-green: #006400;
+    --primary-light: #008000;
+    --success-green: #28a745;
+    --light-green: #d4edda;
+    --dark-green: #004d00;
+    --soft-green: #f0f8f0;
+    --hover-green: #005600;
+    --text-dark: #2c3e50;
+    --text-light: #5a6c7d;
+    --border-light: #e0e6ed;
+}
+
+/* বেসিক স্টাইল */
+body {
+    font-family: 'Hind Siliguri', 'SolaimanLipi', 'Arial', sans-serif;
+    background: #f8fafc;
+}
+
+/* হেডার স্টাইল */
+#header {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%) !important;
+    color: white;
+    border-bottom: 4px solid var(--dark-green);
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 100, 0, 0.15);
+}
+
+#branding {
+    padding: 15px 20px;
+}
+
+#branding h1 {
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.4em;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#branding h1 a {
+    color: white !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+#branding h1 a:hover {
+    transform: translateX(5px);
+}
+
+/* লোগো স্টাইল */
+.admin-logo {
+    height: 45px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.admin-logo:hover {
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* নেভিগেশন লিংক */
+.nav-global-container {
+    padding: 0 20px 15px;
+}
+
+.nav-global-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-decoration: none;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-global-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ব্রেডক্রম্বস */
+div.breadcrumbs {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%) !important;
+    color: white;
+    font-weight: 500;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.95em;
+}
+
+div.breadcrumbs a {
+    color: #c8e6c9 !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+div.breadcrumbs a:before {
+    content: "←";
+    font-size: 0.9em;
+}
+
+div.breadcrumbs a:hover {
+    color: white !important;
+    transform: translateX(-2px);
+}
+
+div.breadcrumbs a:first-child:before {
+    content: "🏠";
+    margin-right: 5px;
+}
+
+/* মেইন কন্টেন্ট */
+#content {
+    padding: 25px;
+    background: #f8fafc;
+    min-height: calc(100vh - 140px);
+}
+
+#content-main {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-light);
+    overflow: hidden;
+}
+
+/* মডিউল হেডার */
+.module h2, .module caption, .inline-group h2 {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%) !important;
+    color: white !important;
+    font-weight: 600;
+    padding: 15px 20px !important;
+    border-radius: 0 !important;
+    font-size: 1.1em;
+    border-bottom: 3px solid var(--dark-green);
+}
+
+/* বাটন স্টাইল */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(0, 100, 0, 0.2) !important;
+    font-family: 'Hind Siliguri', sans-serif;
+    cursor: pointer;
+}
+
+.button:hover, input[type=submit]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(0, 100, 0, 0.3) !important;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: linear-gradient(135deg, var(--success-green) 0%, #34ce57 100%) !important;
+    border: none !important;
+}
+
+.button.default:hover, input[type=submit].default:hover {
+    background: linear-gradient(135deg, #218838 0%, var(--success-green) 100%) !important;
+}
+
+/* ডিলিট বাটন */
+.deletelink {
+    background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%) !important;
+    border-radius: 8px !important;
+    padding: 10px 20px !important;
+}
+
+.deletelink:hover {
+    background: linear-gradient(135deg, #c82333 0%, #dc3545 100%) !important;
+}
+
+/* ফর্ম স্টাইল */
+input[type=text], input[type=password], input[type=email], input[type=url],
+input[type=number], textarea, select, .vTextField {
+    border: 2px solid var(--border-light) !important;
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 0.95em;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
+input[type=url]:focus, input[type=number]:focus, textarea:focus, select:focus {
+    border-color: var(--primary-green) !important;
+    box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.1) !important;
+    outline: none !important;
+    transform: translateY(-1px);
+}
+
+/* সিলেক্ট বক্স */
+select {
+    background: white url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23006400' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") no-repeat right 15px center/16px 16px !important;
+    padding-right: 45px !important;
+}
+
+/* টেবিল স্টাইল */
+#changelist table thead th {
+    background: linear-gradient(135deg, var(--soft-green) 0%, #e8f5e8 100%) !important;
+    color: var(--primary-green) !important;
+    font-weight: 700;
+    border-bottom: 3px solid var(--primary-green) !important;
+    padding: 15px 12px !important;
+}
+
+#changelist table tbody tr {
+    transition: all 0.3s ease;
+}
+
+#changelist table tbody tr:hover {
+    background: var(--soft-green) !important;
+    transform: translateX(5px);
+}
+
+#changelist table tbody td {
+    padding: 12px !important;
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+/* সাইডবার */
+#content-related {
+    background: linear-gradient(135deg, var(--soft-green) 0%, #e8f5e8 100%) !important;
+    border-left: 4px solid var(--primary-green) !important;
+    border-radius: 0 0 0 12px;
+}
+
+#content-related .module {
+    background: transparent !important;
+}
+
+#content-related .module h2 {
+    background: var(--primary-green) !important;
+    color: white !important;
+    border-radius: 8px 8px 0 0 !important;
+    margin-bottom: 15px;
+}
+
+/* মেসেজ স্টাইল */
+.messagelist .success {
+    background: var(--light-green) !important;
+    color: var(--dark-green) !important;
+    border-left: 4px solid var(--success-green) !important;
+    border-radius: 0 8px 8px 0;
+    padding: 15px 20px;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.messagelist .warning {
+    background: #fff3cd !important;
+    color: #856404 !important;
+    border-left: 4px solid #ffc107 !important;
+    border-radius: 0 8px 8px 0;
+    padding: 15px 20px;
+    margin: 10px 0;
+}
+
+.messagelist .error {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border-left: 4px solid #dc3545 !important;
+    border-radius: 0 8px 8px 0;
+    padding: 15px 20px;
+    margin: 10px 0;
+}
+
+/* পেজিনেশন */
+.paginator {
+    background: var(--soft-green) !important;
+    border-top: 3px solid var(--primary-green) !important;
+    padding: 15px 20px !important;
+    border-radius: 0 0 12px 12px;
+}
+
+.paginator a:link, .paginator a:visited {
+    background: white !important;
+    color: var(--primary-green) !important;
+    border: 2px solid var(--primary-green) !important;
+    border-radius: 6px !important;
+    margin: 0 3px !important;
+    padding: 8px 12px !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.paginator a:hover {
+    background: var(--primary-green) !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.2);
+}
+
+.paginator .this-page {
+    background: var(--primary-green) !important;
+    color: white !important;
+    border: 2px solid var(--primary-green) !important;
+    font-weight: 700;
+}
+
+/* সার্চ বক্স */
+#searchbar {
+    border: 2px solid var(--primary-green) !important;
+    border-radius: 25px !important;
+    padding: 10px 20px !important;
+    font-family: 'Hind Siliguri', sans-serif;
+    transition: all 0.3s ease;
+}
+
+#searchbar:focus {
+    box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.1) !important;
+    transform: scale(1.02);
+}
+
+/* লগইন পেজ */
+.login .form-row {
+    padding: 10px 0;
+}
+
+.login .submit-row {
+    padding: 20px 0 0 0;
+}
+
+/* রেস্পন্সিভ ডিজাইন */
+@media (max-width: 768px) {
+    #header {
+        padding: 0 !important;
+    }
+    
+    #branding {
+        padding: 12px 15px;
+    }
+    
+    #branding h1 {
+        font-size: 1.1em !important;
+    }
+    
+    .admin-logo {
+        height: 35px !important;
+    }
+    
+    #content {
+        padding: 15px;
+    }
+    
+    .nav-global-container {
+        padding: 0 15px 12px;
+    }
+    
+    .nav-global-link {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+/* ডার্ক মোড সাপোর্ট */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-dark: #e9ecef;
+        --text-light: #adb5bd;
+        --border-light: #495057;
+    }
+    
+    body {
+        background: #1a1d23;
+        color: var(--text-dark);
+    }
+    
+    #content-main {
+        background: #2d3748;
+        border-color: var(--border-light);
+    }
+    
+    input[type=text], input[type=password], input[type=email], input[type=url],
+    input[type=number], textarea, select, .vTextField {
+        background: #374151;
+        color: var(--text-dark);
+        border-color: #4b5563 !important;
+    }
+}
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'custom_admin:index' %}">
+        {% if site_settings and site_settings.logo %}
+        <img src="{{ site_settings.logo.url }}" alt="রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়" class="admin-logo">
+        {% else %}
+        <img src="{% static 'admin/img/logo.png' %}" alt="রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়" class="admin-logo" onerror="this.style.display='none'">
+        {% endif %}
+        <span>রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয় - এডমিন</span>
+    </a>
+</h1>
+{% endblock %}
+
+{% block nav-global %}
+<div class="nav-global-container">
+    <a href="/" class="nav-global-link" target="_blank">
+        <i class="fas fa-external-link-alt"></i>
+        ওয়েবসাইট দেখুন
+    </a>
+    <a href="{% url 'custom_admin:dashboard' %}" class="nav-global-link">
+        <i class="fas fa-tachometer-alt"></i>
+        ড্যাশবোর্ড
+    </a>
+    <a href="{% url 'custom_admin:logout' %}" class="nav-global-link">
+        <i class="fas fa-sign-out-alt"></i>
+        লগআউট
+    </a>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div id="footer">
+    <div class="footer-content">
+        <p>
+            <strong>রূপসা ওয়াহেদ আলী উচ্চ বিদ্যালয়</strong> 
+            | এডমিন প্যানেল 
+            | <i class="fas fa-heart" style="color: #e74c3c;"></i> 
+            ডিজাইন করা হয়েছে শিক্ষার জন্য
+        </p>
+        <p style="margin-top: 5px; font-size: 0.9em; opacity: 0.8;">
+            <i class="fas fa-clock"></i> 
+            সর্বশেষ আপডেট: {% now "j F Y H:i" %}
+        </p>
+    </div>
+</div>
+
+<style>
+#footer {
+    background: linear-gradient(135deg, var(--dark-green) 0%, var(--primary-green) 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+    border-top: 4px solid var(--primary-light);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content a {
+    color: #c8e6c9 !important;
+    text-decoration: none;
+}
+
+.footer-content a:hover {
+    color: white !important;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load static %}
+<header class="header-container">
+  <div class="container">
+    <div class="d-flex align-items-center">
+      <!-- লোগো -->
+      {% if site_settings.logo %}
+        <div class="header-logo me-4">
+          <img src="{{ site_settings.logo.url }}" alt="লোগো" class="img-fluid">
+        </div>
+      {% endif %}
+      
+      <!-- শিরোনাম -->
+      <div class="header-text">
+        <h1 class="header-title">{{ site_settings.site_title }}</h1>
+        <p class="header-subtitle">রূপসা, শিবালয়, মানিকগঞ্জ</p>
+      </div>
+    </div>
+  </div>
+</header>

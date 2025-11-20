@@ -1,0 +1,343 @@
+/* breaking-news.css */
+/* Breaking News Bar Styles - Updated with proper marquee */
+
+.news_section {
+  background: linear-gradient(135deg, #609513 0%, #4a750f 100%);
+  padding: 12px 0;
+  color: white;
+  font-family: 'Siyam Rupali', Arial, sans-serif;
+  overflow: hidden;
+  border-bottom: 2px solid #3a5a0c;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.news-marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+
+.news-marquee {
+  display: flex;
+  animation: scrollNews 30s linear infinite;
+  white-space: nowrap;
+  padding: 5px 0;
+  position: absolute;
+  left: 0;
+}
+
+/* Improved marquee animation with proper loop */
+@keyframes scrollNews {
+  100% {
+      transform: translateX( 100%);
+  }
+  100% {
+      transform: translateX(-80%);
+  }
+}
+
+.news-item {
+  padding: 0 30px;
+  font-size: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.fntclrw {
+  color: white !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.news-item a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.news-item a:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+/* "সকল খবর" বাটন স্টাইল */
+.btn-all-news {
+  background: linear-gradient(135deg, #ff6b35 0%, #e74c3c 100%);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Siyam Rupali', Arial, sans-serif;
+  width: 100%;
+  max-width: 150px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-all-news:hover {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* Custom Modal Styles */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  overflow-y: auto;
+  padding: 50px 20px;
+  backdrop-filter: blur(5px);
+}
+
+.custom-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.custom-modal-container {
+  background: white;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 80vh;
+  overflow: hidden;
+  transform: translateY(-50px);
+  transition: transform 0.4s ease;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  border: 2px solid #609513;
+}
+
+.custom-modal-overlay.active .custom-modal-container {
+  transform: translateY(0);
+}
+
+.custom-modal-header {
+  background: linear-gradient(135deg, #609513 0%, #4a750f 100%);
+  color: white;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.custom-modal-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #ffd700, #ff6b35, #ffd700);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.custom-modal-title {
+  font-family: 'Siyam Rupali', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.custom-modal-title::before {
+  content: '📢';
+  font-size: 20px;
+}
+
+.custom-close-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.custom-close-btn:hover {
+  background: rgba(255,255,255,0.3);
+  transform: rotate(90deg);
+}
+
+.custom-modal-body {
+  padding: 25px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: #f8f9fa;
+}
+
+/* নিউজ লিস্ট স্টাইল */
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-list li {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #e9ecef;
+  background: white;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.news-list li:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-left: 4px solid #609513;
+}
+
+.news-bullet {
+  margin-right: 15px;
+  font-size: 18px;
+  color: #609513;
+  min-width: 20px;
+}
+
+.news-title {
+  flex: 1;
+  font-size: 16px;
+  color: #2c3e50;
+  font-family: 'Siyam Rupali', Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.btn-download {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 110px;
+  justify-content: center;
+}
+
+.btn-download:hover {
+  background: linear-gradient(135deg, #218838 0%, #1e9e8a 100%);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-download::before {
+  content: '📥';
+}
+
+.custom-modal-footer {
+  padding: 20px 25px;
+  background: #f8f9fa;
+  text-align: right;
+  border-top: 1px solid #dee2e6;
+}
+
+.btn-close-custom {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Siyam Rupali', Arial, sans-serif;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-close-custom:hover {
+  background: linear-gradient(135deg, #5a6268 0%, #3d4348 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .news_section {
+      padding: 6px 0;
+  }
+  
+  .news-item {
+      font-size: 14px;
+      padding: 0 20px;
+  }
+  
+  .btn-all-news {
+      padding: 6px 15px;
+      font-size: 14px;
+      max-width: 120px;
+  }
+  
+  .custom-modal-container {
+      width: 95%;
+      margin-top: 20px;
+  }
+  
+  .news-list li {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+  }
+  
+  .btn-download {
+      margin-left: 0;
+      align-self: flex-end;
+  }
+}
+
+/* Pause on hover for better readability */
+.news-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Better marquee solution with JavaScript backup */
+.news-marquee {
+  display: flex;
+  animation: scrollNews 30s linear infinite;
+  white-space: nowrap;
+  padding: 5px 0;
+}

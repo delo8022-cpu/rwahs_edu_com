@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block slider %}
+  {% if sliders %}
+  <div id="mainSlider" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      {% for slide in sliders %}
+      <button type="button" data-bs-target="#mainSlider" data-bs-slide-to="{{ forloop.counter0 }}"
+        class="{% if forloop.first %}active{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+      {% endfor %}
+    </div>
+    <div class="carousel-inner rounded shadow">
+      {% for slide in sliders %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <img src="{{ slide.image.url }}" class="d-block w-100" alt="{{ slide.title }}">
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-3 rounded">
+          <h3 class="text-white">{{ slide.title }}</h3>
+          {% if slide.subtitle %}
+          <p class="text-light">{{ slide.subtitle }}</p>
+          {% endif %}
+          {% if slide.link %}
+          <a href="{{ slide.link }}" class="btn btn-success btn-sm mt-2" target="_blank">বিস্তারিত</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainSlider" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainSlider" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  {% endif %}
+{% endblock %}
+
+{% block homepage_sections %}
+  <!-- Quick Access Box Section with Big Icons -->
+  <div class="main-content">
+    <div class="box-section">
+      {% for section in sections %}
+      <a href="{{ section.link_url }}" class="box2" target="_blank">
+        {% if section.icon_image %}
+          <img src="{{ section.icon_image.url }}" alt="{{ section.title }}" class="section-icon">
+        {% elif section.icon_class %}
+          <i class="{{ section.icon_class }} section-icon-fallback"></i>
+        {% endif %}
+        <h4>{{ section.title }}</h4>
+        {% if section.description %}
+          <p class="section-description">{{ section.description }}</p>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

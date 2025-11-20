@@ -1,0 +1,500 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Welcome Header -->
+    <div class="dashboard-header">
+        <div class="welcome-section">
+            <h1>স্বাগতম, {{ request.user.get_full_name|default:request.user.username }}</h1>
+            <p>আজকের তারিখ: {% now "j F Y" %} | {{ request.user.groups.first|default:"এডমিন" }}</p>
+        </div>
+        <div class="header-stats">
+            <div class="stat-badge">
+                <i class="fas fa-bullhorn"></i>
+                <span>{{ active_notices }} সক্রিয় নোটিশ</span>
+            </div>
+            <div class="stat-badge">
+                <i class="fas fa-chart-line"></i>
+                <span>{{ total_results }} রেজাল্ট</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats Grid -->
+    <div class="grid grid-4">
+        <div class="grid-item stat-card">
+            <div class="stat-content">
+                <div class="stat-icon primary">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ total_notices }}</h3>
+                    <p>মোট নোটিশ</p>
+                    <span class="stat-trend success">+{{ active_notices }} সক্রিয়</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-item stat-card">
+            <div class="stat-content">
+                <div class="stat-icon success">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ total_results }}</h3>
+                    <p>রেজাল্ট আর্কাইভ</p>
+                    <span class="stat-trend">SSC/HSC</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-item stat-card">
+            <div class="stat-content">
+                <div class="stat-icon warning">
+                    <i class="fas fa-images"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ active_sliders }}</h3>
+                    <p>সক্রিয় স্লাইডার</p>
+                    <span class="stat-trend">হোমপেজ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-item stat-card">
+            <div class="stat-content">
+                <div class="stat-icon info">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ total_officials }}</h3>
+                    <p>কর্মকর্তাগণ</p>
+                    <span class="stat-trend">ম্যানেজমেন্ট</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-3">
+        <!-- Recent Activity -->
+        <div class="grid-item span-2">
+            <div class="card-header">
+                <h3><i class="fas fa-history"></i> সাম্প্রতিক কার্যক্রম</h3>
+                <a href="/admin/school/notice/" class="btn btn-sm btn-ghost">সব দেখুন</a>
+            </div>
+            <div class="activity-feed">
+                {% for notice in recent_notices %}
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>{{ notice.title }}</h4>
+                        <p>{{ notice.published_date|timesince }} আগে প্রকাশিত</p>
+                    </div>
+                    <div class="activity-status {% if notice.is_active %}active{% else %}inactive{% endif %}">
+                        <i class="fas fa-circle"></i>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>কোন কার্যক্রম নেই</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="grid-item">
+            <div class="card-header">
+                <h3><i class="fas fa-bolt"></i> দ্রুত কাজ</h3>
+            </div>
+            <div class="quick-actions-grid">
+                <a href="/admin/school/notice/add/" class="action-card primary">
+                    <i class="fas fa-plus"></i>
+                    <span>নতুন নোটিশ</span>
+                </a>
+                <a href="/admin/school/result/add/" class="action-card success">
+                    <i class="fas fa-file-upload"></i>
+                    <span>রেজাল্ট আপলোড</span>
+                </a>
+                <a href="/admin/school/slider/add/" class="action-card warning">
+                    <i class="fas fa-image"></i>
+                    <span>স্লাইডার যোগ</span>
+                </a>
+                <a href="/admin/school/official/add/" class="action-card info">
+                    <i class="fas fa-user-plus"></i>
+                    <span>কর্মকর্তা যোগ</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- System Status -->
+        <div class="grid-item">
+            <div class="card-header">
+                <h3><i class="fas fa-server"></i> সিস্টেম স্ট্যাটাস</h3>
+            </div>
+            <div class="system-status">
+                <div class="status-item online">
+                    <i class="fas fa-database"></i>
+                    <div class="status-info">
+                        <span class="status-name">ডাটাবেস</span>
+                        <span class="status-desc">সক্রিয়</span>
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="status-item online">
+                    <i class="fas fa-hdd"></i>
+                    <div class="status-info">
+                        <span class="status-name">স্টোরেজ</span>
+                        <span class="status-desc">৮৫% খালি</span>
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="status-item online">
+                    <i class="fas fa-shield-alt"></i>
+                    <div class="status-info">
+                        <span class="status-name">সিকিউরিটি</span>
+                        <span class="status-desc">সুরক্ষিত</span>
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Notices -->
+        <div class="grid-item span-3">
+            <div class="card-header">
+                <h3><i class="fas fa-newspaper"></i> সর্বশেষ নোটিশ</h3>
+                <a href="/admin/school/notice/" class="btn btn-sm btn-ghost">সব নোটিশ</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>শিরোনাম</th>
+                            <th>প্রকাশের তারিখ</th>
+                            <th>স্ট্যাটাস</th>
+                            <th>কর্ম</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for notice in recent_notices %}
+                        <tr>
+                            <td>
+                                <div class="table-content">
+                                    <strong>{{ notice.title|truncatechars:60 }}</strong>
+                                </div>
+                            </td>
+                            <td>{{ notice.published_date|date:"d M Y" }}</td>
+                            <td>
+                                <span class="status-badge {% if notice.is_active %}status-active{% else %}status-inactive{% endif %}">
+                                    {{ notice.is_active|yesno:"সক্রিয়,নিষ্ক্রিয়" }}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="table-actions">
+                                    <a href="/admin/school/notice/{{ notice.id }}/change/" class="table-action edit" title="এডিট">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="/admin/school/notice/{{ notice.id }}/delete/" class="table-action delete" title="ডিলিট">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">
+                                <i class="fas fa-inbox fa-2x"></i>
+                                <p>কোন নোটিশ নেই</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Enhanced Dashboard Styles */
+.dashboard-container {
+    padding: var(--spacing-lg);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-medium);
+}
+
+.welcome-section h1 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.welcome-section p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: var(--font-size-lg);
+}
+
+.header-stats {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.stat-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.2);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced Stat Cards */
+.stat-card {
+    border-left: 4px solid;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.stat-card .stat-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.stat-card .stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+}
+
+.stat-card .stat-icon.primary { background: rgba(0, 100, 0, 0.1); color: var(--primary-green); border-left-color: var(--primary-green); }
+.stat-card .stat-icon.success { background: rgba(40, 167, 69, 0.1); color: var(--success); border-left-color: var(--success); }
+.stat-card .stat-icon.warning { background: rgba(255, 193, 7, 0.1); color: var(--warning); border-left-color: var(--warning); }
+.stat-card .stat-icon.info { background: rgba(23, 162, 184, 0.1); color: var(--info); border-left-color: var(--info); }
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 2em;
+    color: var(--text-dark);
+}
+
+.stat-info p {
+    margin: var(--spacing-xs) 0;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.stat-trend {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+}
+
+.stat-trend.success { background: var(--success-light); color: var(--success); }
+
+/* Activity Feed */
+.activity-feed {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.activity-item:hover {
+    background: var(--soft-green);
+    transform: translateX(5px);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--primary-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity-content h4 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+    color: var(--text-dark);
+}
+
+.activity-content p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+}
+
+.activity-status.active i { color: var(--success); }
+.activity-status.inactive i { color: var(--text-muted); }
+
+/* Quick Actions Grid */
+.quick-actions-grid {
+    display: grid;
+    gap: var(--spacing-md);
+}
+
+.action-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.action-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+    color: white;
+}
+
+.action-card.primary { background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-light) 100%); }
+.action-card.success { background: linear-gradient(135deg, var(--success) 0%, #34ce57 100%); }
+.action-card.warning { background: linear-gradient(135deg, var(--warning) 0%, #ffd054 100%); color: var(--text-dark); }
+.action-card.info { background: linear-gradient(135deg, var(--info) 0%, #39c0d6 100%); }
+
+.action-card i {
+    font-size: 1.5em;
+}
+
+.action-card span {
+    font-weight: 600;
+    font-size: var(--font-size-base);
+}
+
+/* System Status */
+.system-status {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--light);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+}
+
+.status-item:hover {
+    background: var(--soft-green);
+    transform: translateX(5px);
+}
+
+.status-item i {
+    font-size: 1.2em;
+    color: var(--primary-green);
+}
+
+.status-info {
+    flex: 1;
+}
+
+.status-name {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.status-desc {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+.status-item.offline .status-indicator {
+    background: var(--danger);
+}
+
+/* Enhanced Tables */
+.table-content strong {
+    color: var(--text-dark);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .header-stats {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: var(--spacing-md);
+    }
+    
+    .welcome-section h1 {
+        font-size: 1.5em;
+    }
+    
+    .stat-card .stat-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+{% endblock %}

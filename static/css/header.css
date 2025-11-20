@@ -1,0 +1,41 @@
+/* header.css */
+
+header.header-container {
+    background: linear-gradient(to bottom, #5E841F, #5E841F);
+    color: white;
+    padding: 20px 0; /* উপর-নিচে 10px প্যাডিং — চাইলে 0 করুন */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    margin: 0px; 
+}
+.header-logo img {
+    height: 90px; /* লোগোর উচ্চতা */
+    width: auto;
+}
+
+.header-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.header-subtitle {
+    font-size: 28px;
+    margin: 5px 0 0;
+    color: white;
+    opacity: 0.95;
+}
+
+/* মোবাইলে লোগো ছোট করুন */
+@media (max-width: 768px) {
+    .header-logo img {
+        height: 50px;
+    }
+    .header-title {
+        font-size: 24px;
+    }
+    .header-subtitle {
+        font-size: 20px;
+    }
+}

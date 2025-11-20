@@ -1,0 +1,325 @@
+/* Login Page - Completely Separate Styles */
+.login-body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #006400 0%, #008000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Hind Siliguri', 'Arial', sans-serif;
+    padding: 15px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 380px; /* আরও ছোট */
+}
+
+.login-card {
+    background: white;
+    border-radius: 12px; /* ছোট border radius */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* ছোট shadow */
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out;
+}
+
+.login-header {
+    background: linear-gradient(135deg, #006400 0%, #008000 100%);
+    color: white;
+    padding: 20px 25px; /* কম padding */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 15px 15px; /* ছোট pattern */
+    animation: float 20s linear infinite;
+}
+
+.school-logo {
+    width: 60px; /* ছোট লোগো */
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    padding: 12px; /* কম padding */
+    margin: 0 auto 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* ছোট shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.school-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.school-logo i {
+    font-size: 1.8em; /* ছোট icon */
+    color: #006400;
+}
+
+.login-header h1 {
+    margin: 0 0 6px 0;
+    font-size: 1.2em; /* ছোট font */
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.login-header p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.85em; /* ছোট font */
+    line-height: 1.4;
+}
+
+.login-content {
+    padding: 25px; /* কম padding */
+}
+
+/* Form Styles */
+.login-form .form-group {
+    margin-bottom: 16px; /* কম margin */
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 6px; /* কম margin */
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.9em; /* ছোট font */
+}
+
+.form-icon-group {
+    position: relative;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 14px 10px 40px; /* কম padding */
+    font-size: 0.9em; /* ছোট font */
+    border: 2px solid #e0e6ed;
+    border-radius: 6px; /* ছোট radius */
+    background: white;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
+    height: 42px; /* নির্দিষ্ট height */
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #006400;
+    box-shadow: 0 0 0 2px rgba(0, 100, 0, 0.1); /* ছোট shadow */
+}
+
+.form-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 1em; /* ছোট icon */
+}
+
+/* Button Styles */
+.login-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* কম gap */
+    margin-top: 20px; /* কম margin */
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* কম gap */
+    padding: 10px 16px; /* কম padding */
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 0.9em; /* ছোট font */
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px; /* ছোট radius */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    height: 42px; /* নির্দিষ্ট height */
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #006400 0%, #008000 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(0, 100, 0, 0.2); /* ছোট shadow */
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #004d00 0%, #006400 100%);
+    transform: translateY(-1px); /* কম transform */
+    box-shadow: 0 4px 12px rgba(0, 100, 0, 0.25); /* ছোট shadow */
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #6c757d;
+    border: 1px solid #e0e6ed;
+}
+
+.btn-ghost:hover {
+    background: #f0f8f0;
+    color: #006400;
+    border-color: #006400;
+}
+
+/* Checkbox */
+.form-remember {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* কম gap */
+    margin-bottom: 16px; /* কম margin */
+}
+
+.form-remember input[type="checkbox"] {
+    width: 16px; /* ছোট checkbox */
+    height: 16px;
+    accent-color: #006400;
+}
+
+.form-remember label {
+    color: #6c757d;
+    font-size: 0.85em; /* ছোট font */
+    cursor: pointer;
+}
+
+/* Messages */
+.error-message {
+    background: #f8d7da;
+    color: #dc3545;
+    padding: 12px; /* কম padding */
+    border-radius: 6px; /* ছোট radius */
+    margin-bottom: 16px; /* কম margin */
+    border-left: 3px solid #dc3545; /* ছোট border */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* কম gap */
+    font-size: 0.85em; /* ছোট font */
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 12px; /* কম padding */
+    border-radius: 6px; /* ছোট radius */
+    margin-bottom: 16px; /* কম margin */
+    border-left: 3px solid #28a745; /* ছোট border */
+    display: flex;
+    align-items: center;
+    gap: 8px; /* কম gap */
+    font-size: 0.85em; /* ছোট font */
+}
+
+/* Footer */
+.login-footer {
+    text-align: center;
+    padding: 15px; /* কম padding */
+    background: #f8f9fa;
+    border-top: 1px solid #e0e6ed;
+    color: #6c757d;
+    font-size: 0.8em; /* ছোট font */
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* কম transform */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-5px, -5px) rotate(360deg); } /* কম movement */
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .login-body {
+        padding: 10px;
+    }
+    
+    .login-container {
+        max-width: 340px; /* আরও ছোট mobile এ */
+    }
+    
+    .login-content {
+        padding: 20px;
+    }
+    
+    .login-header {
+        padding: 18px 20px;
+    }
+    
+    .login-header h1 {
+        font-size: 1.1em;
+    }
+    
+    .school-logo {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+    }
+    
+    .school-logo i {
+        font-size: 1.5em;
+    }
+}
+
+/* Utility Classes for Login Page */
+.text-center {
+    text-align: center;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+/* Loading State */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 14px; /* ছোট spinner */
+    height: 14px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

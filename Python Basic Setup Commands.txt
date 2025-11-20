@@ -1,0 +1,97 @@
+Python Basic Setup Commands
+Python Version Check
+python --version  # পাইথন ভার্সন দেখাবে
+python manage.py runserver প্রজেক্ট রান করা
+python manage.py check #কোডে কোন সমস্যা চেক করা
+python manage.py makemigrations #মডেল গুলো ডাটাবেজের সাথে কানেশন ও টেবিল তৈরি করে
+python manage.py migrate #মডেল গুলো ডাটাবেজের সাথে কানেশন ও টেবিল তৈরি করে
+python manage.py showmigrations মাইগ্রেশন সঠিকভাবে অ্যাপ্লাই হয়েছে কিনা চেক করুন
+python manage.py migrate core zero (যদি সমস্যা থেকে যায়) মাইগ্রেশন ক্লিয়ার করে আবার ট্রাই করতে পারেন: সবগুলোর পাশে [X] চিহ্ন থাকলে বুঝবেন সব ঠিক আছে।
+python manage.py migrate
+python manage.py migrate --fake core zero মাইগ্রেশন ক্লিয়ার এবং নতুন মাইগ্রেশন (১) সকল মাইগ্রেশন রিসেট করুন:
+
+পদ্ধতি ১: SQLite3 Shell দিয়ে Clear করা
+SQLite3 ডাটাবেস ক্লিয়ার করার জন্য সরাসরি SQLite Shell ব্যবহার করতে পারেন:
+
+sqlite3 db.sqlite3
+এরপর SQL কমান্ড দিন:
+
+DELETE FROM sqlite_master WHERE type IN ('table', 'index', 'trigger');
+VACUUM;
+
+tree /F > project_structure.txt   প্রজেক্ট স্টাকচার বের করার জন্য Windows
+tree /A > project_structure.txt
+
+python manage.py createsuperuser #নতুন সুভার ইউজার তৈরি করা
+python -m pip install Pillow #প্যাকেজ ম্যানেজার ইনস্টল করা
+where python # পাইথন কোথায় ইনস্টল হয়েছে দেখা যাবে
+
+Install Python
+python -m ensurepip --upgrade  # pip ইনস্টল বা আপডেট হবে
+Create a Virtual Environment
+python -m venv myenv  # ভার্চুয়াল এনভায়রনমেন্ট তৈরি হবে
+Activate the Virtual Environment (Windows)
+myenv\Scripts\activate  # Windows এ ভার্চুয়াল এনভায়রনমেন্ট অ্যাকটিভেট হবে
+Activate the Virtual Environment (macOS/Linux)
+venv\Scripts\activate.bat
+venv\Scripts\activate
+source venv/Scripts/activate
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser যদি অ্যাকটিভ না হয় তবে চালান
+source myenv/bin/activate  # macOS বা Linux এ ভার্চুয়াল এনভায়রনমেন্ট অ্যাকটিভেট হবে
+Install Required Packages
+pip install -r requirements.txt  # সব প্যাকেজ একসাথে ইনস্টল হবে
+Freeze Installed Packages
+pip freeze > requirements.txt  # ইনস্টল করা প্যাকেজের তালিকা requirements.txt এ সেভ হবে
+Check Installed Packages
+
+pip list  # ইনস্টল করা প্যাকেজের তালিকা দেখাবে
+Upgrade a Package
+pip install --upgrade <package_name>  # প্যাকেজ আপডেট হবে
+Uninstall a Package
+pip uninstall <package_name>  # প্যাকেজ আনইনস্টল হবে
+Create a Python Script
+notepad myscript.py  # নোটপ্যাডে পাইথন স্ক্রিপ্ট তৈরি হবে
+Run a Python Script
+python myscript.py  # স্ক্রিপ্ট রান হবে
+View Documentation for Python Module
+python -m pydoc <module_name>  # মডিউলের ডকুমেন্টেশন দেখাবে
+Check for Available Updates for Python
+python -m pip install --upgrade pip  # pip আপডেট করা হবে
+Create a Git Repository
+
+git init  # নতুন গিট রিপোজিটরি তৈরি হবে
+Clone an Existing Git Repository
+git clone <repository_url>  # রিপোজিটরি ক্লোন হবে
+Check Git Status
+git status  # গিট স্ট্যাটাস দেখাবে
+Add Changes to Git
+git add <file_name>  # পরিবর্তন গুলি যোগ হবে
+Commit Changes to Git
+git commit -m "Commit message"  # কমিট মেসেজ সহ কমিট হবে
+Push Changes to Remote Git Repository
+git push origin <branch_name>  # রিমোট রিপোজিটরিতে পরিবর্তন পাঠানো হবে
+Flask Installation (Web Development)
+pip install Flask  # Flask ইনস্টল হবে
+Django Installation (Web Development)
+
+pip install Django  # Django ইনস্টল হবে
+pip install --upgrade Django
+NumPy Installation (Data Science)
+pip install numpy  # NumPy ইনস্টল হবে
+Pandas Installation (Data Science)
+pip install pandas  # Pandas ইনস্টল হবে
+TensorFlow Installation (Machine Learning)
+pip install tensorflow  # TensorFlow ইনস্টল হবে
+PyTorch Installation (Machine Learning)
+pip install torch  # PyTorch ইনস্টল হবে
+Tkinter Installation (GUI Development)
+pip install tk  # Tkinter ইনস্টল হবে
+Jupyter Notebook Installation (Interactive Development)
+pip install notebook  # Jupyter Notebook ইনস্টল হবে
+pytest Installation (Testing)
+pip install pytest  # pytest ইনস্টল হবে
+SQLite Installation (Database)
+pip install sqlite3  # SQLite ইনস্টল হবে
+
+groupbuyseotools.store
+arc
